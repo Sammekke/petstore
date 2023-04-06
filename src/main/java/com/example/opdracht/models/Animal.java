@@ -20,14 +20,17 @@ public class Animal {
     @Id
     @GeneratedValue
     private Long id;
+
     @NotBlank(message= "name is required")
     @NotNull(message= "name is required")
     @JsonProperty("type")
     private String type;
+
     @NotBlank(message= "name is required")
     @NotNull(message= "name is required")
     @JsonProperty("name")
     private String name;
+
     @NotNull(message= "age is required")
     @JsonProperty("age")
     private Integer age;

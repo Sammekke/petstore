@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.util.Optional;
 
@@ -23,10 +20,6 @@ public class RestControl {
 
     @PostMapping(value = "/saveanimal", produces = "application/json", consumes = "application/json")
     public ResponseEntity<String> saveAnimal(@Valid @RequestBody Animal animal) {
-        //String missingAttribute = isAnimalObjectComplete(animal);
-       // if (missingAttribute != null) {
-         //   return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The body does not contain a " + missingAttribute);
-        //};
         animalRepository.save(animal);
         return ResponseEntity.created(URI
                         .create(String.format("/animal/%s", animal.getId())))
